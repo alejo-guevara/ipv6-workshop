@@ -1,4 +1,1 @@
-# ipv6-workshop
-# ipv6-workshop
-# ipv6-workshop
-# ipv6-workshop
+# En esta actividad simularemos una red con diferentes tipos de nodos, como ser enrutadores y hosts para que los mismos se puedan  comunicar entre sí utilizando IPv6. Trabajaremos en la modalidad de seminario interactivo donde los instructores  realizarán una introducción a la teoría y luego realizarán una demostración paso a paso.
