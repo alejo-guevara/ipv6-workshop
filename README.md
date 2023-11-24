@@ -16,3 +16,5 @@ For FRR Node (R1)
 
 sudo docker exec -it clab-ipv6-ws-R1 vtysh
 sudo docker exec -it clab-ipv6-ws-R1 /bin/ash
+
+For 
