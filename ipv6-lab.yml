@@ -1,0 +1,38 @@
+name: cs 
+
+topology:
+
+
+
+
+  nodes:
+    SR-1_1:
+      kind: vr-sros
+      image: vrnetlab/vr-sros:23.10.R1
+      type: sr-1
+      license: license-sros23.txt
+  
+    SR-1_2:
+      kind: vr-sros
+      image: vrnetlab/vr-sros:23.10.R1
+      type: sr-1
+      license: license-sros23.txt
+
+    SR-1_3:
+      kind: vr-sros
+      image: vrnetlab/vr-sros:23.10.R1
+      type: sr-1
+      license: license-sros23.txt
+
+
+
+  links:
+    - endpoints: ["SR-1_1:eth2", "SR-1_2:eth1"]
+    - endpoints: ["SR-1_1:eth3", "SR-1_3:eth1"]
+    - endpoints: ["SR-1_2:eth3", "SR-1_3:eth2"]
+
+  #  - endpoints: ["IXR-Xs-1:eth2", "IXR-Xs-2:eth2"]
+  #  - endpoints: ["IXR-Xs-1:eth3", "IXR-Xs-3:eth1"]
+  #  - endpoints: ["IXR-Xs-1:eth4", "IXR-Xs-4:eth1"]
+  #  - endpoints: ["IXR-Xs-3:eth2", "IXR-Xs-2:eth3"]
+  #  - endpoints: ["IXR-Xs-4:eth2", "IXR-Xs-2:eth4"]
