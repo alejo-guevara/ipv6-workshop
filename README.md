@@ -9,4 +9,10 @@ We will use the ContainerLab platform which allows simulating complex networks i
 For SRL Node (Rbackbone)
 
 ssh admin@clab-ipv6-ws-Rbackbone
+
 password: NokiaSrl1!
+
+For FRR Node (R1)
+
+sudo docker exec -it clab-ipv6-ws-R1 vtysh
+sudo docker exec -it clab-ipv6-ws-R1 /bin/ash
