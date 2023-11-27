@@ -6,7 +6,7 @@ We will use the ContainerLab platform which allows simulating complex networks i
 
 # Use the following commands to access the nodes
 
-For SRL Node (Rbackbone)
+For SRL Node (Rbackbone and R3)
 
 ssh admin@clab-ipv6-ws-Rbackbone
 
@@ -18,5 +18,8 @@ sudo docker exec -it clab-ipv6-ws-R1 vtysh
 sudo docker exec -it clab-ipv6-ws-R1 /bin/ash
 
 For OpenBGPD Node (R2)
+
+sudo docker exec -it clab-ipv6-ws-R2 ash
+
 
 docker exec –it clab-ixp-rs2 birdc
