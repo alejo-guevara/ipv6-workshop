@@ -4,6 +4,10 @@ During this activity we will simulate a network with different types of nodes, s
 
 We will use the ContainerLab platform which allows simulating complex networks in a simple and efficient manner.
 
+# To deploy the lab:
+
+sudo containerlab dep -t ipv6-lab.yml
+
 # Use the following commands to access the nodes
 
 For SRL Node (Rbackbone and R3)
@@ -14,7 +18,6 @@ password: NokiaSrl1!
 
 For FRR Node (R1)
 
-sudo docker exec -it clab-ipv6-ws-R1 vtysh
 sudo docker exec -it clab-ipv6-ws-R1 /bin/ash
 
 For OpenBGPD Node (R2)
@@ -22,4 +25,3 @@ For OpenBGPD Node (R2)
 sudo docker exec -it clab-ipv6-ws-R2 ash
 
 
-docker exec –it clab-ixp-rs2 birdc
