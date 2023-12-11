@@ -29,8 +29,8 @@ topology:
     R2: 
       kind: linux
       image: quay.io/openbgpd/openbgpd:7.9
-#      binds:
-#        - configs/openbgpd.conf:/etc/bgpd/bgpd.conf
+      binds:
+        - configs/R2-openbgpd.conf:/etc/bgpd/bgpd.conf
       exec:
         - "ip address add dev eth1 2001:db8:ffab::2/64"
         - "ip address add dev eth2 2001:db8:eb01::1/64"
