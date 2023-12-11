@@ -17,13 +17,14 @@ topology:
 
     Rbackbone:
       kind: srl
+      startup-config: configs/Rbackbone.json
 
     R1:
       kind: linux
       image: quay.io/frrouting/frr:8.4.1
-#      binds:
-#        - configs/frr.conf:/etc/frr/frr.conf
-#        - configs/frr-daemons.cfg:/etc/frr/daemons
+      binds:
+        - configs/R1-frr.conf:/etc/frr/frr.conf
+        - configs/R1-frr-daemons.cfg:/etc/frr/daemons
 
     R2: 
       kind: linux
@@ -35,7 +36,7 @@ topology:
 
     R3:
       kind: srl
-      startup-config: configs/R3_ori.json
+      startup-config: configs/R3.json
 
   ### CLIENTS AND SERVERS ###
 
