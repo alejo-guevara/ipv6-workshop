@@ -70,6 +70,6 @@ topology:
     - endpoints: ["Rbackbone:e1-3", "R3:e1-1"]
     - endpoints: ["Rbackbone:e1-4", "Server:eth1"]
     - endpoints: ["R1:eth2", "C1:eth1"]
-    - endpoints: ["R2:eth2", "C2:eth1"]
+  #  - endpoints: ["R2:eth2", "C2:eth1"]
     - endpoints: ["R3:e1-2", "C3:eth1"]
 
