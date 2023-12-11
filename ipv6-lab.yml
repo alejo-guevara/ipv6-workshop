@@ -43,33 +43,38 @@ topology:
 
     C1:
       kind: linux
-      #exec:
-      #  - ip address add 172.17.0.1/24 dev eth1
-      #  - ip -6 address add 2002::172:17:0:1/96 dev eth1
+      exec:
+        - ip -6 address add 2001:db8:ca01::2/64 dev eth1
+        - ip -6 route del ::/0
+        - route add -A inet6 default dev eth1
 
     C2:
       kind: linux
-      #exec:
-      #  - ip address add 172.17.0.1/24 dev eth1
-      #  - ip -6 address add 2002::172:17:0:1/96 dev eth1
+      exec:
+        - ip -6 address add 2001:db8:eb01::2/64 dev eth1
+        - ip -6 route del ::/0
+        - route add -A inet6 default dev eth1
 
     C3:
       kind: linux
-      #exec:
-      #  - ip address add 172.17.0.1/24 dev eth1
-      #  - ip -6 address add 2002::172:17:0:1/96 dev eth1
+      exec:
+        - ip -6 address add 2001:db8:eac1::2/64 dev eth1
+        - ip -6 route del ::/0
+        - route add -A inet6 default dev eth1
 
     Server:
       kind: linux
-      #exec:
-      #  - ip address add 172.17.0.1/24 dev eth1
-      #  - ip -6 address add 2002::172:17:0:1/96 dev eth1
+      exec:
+        - ip -6 address add 2001:db8:ffad::2/64 dev eth1
+        - ip -6 route del ::/0
+        - route add -A inet6 default dev eth1
+
   links:
     - endpoints: ["Rbackbone:e1-1", "R1:eth1"]
     - endpoints: ["Rbackbone:e1-2", "R2:eth1"]
     - endpoints: ["Rbackbone:e1-3", "R3:e1-1"]
     - endpoints: ["Rbackbone:e1-4", "Server:eth1"]
     - endpoints: ["R1:eth2", "C1:eth1"]
-  #  - endpoints: ["R2:eth2", "C2:eth1"]
+    - endpoints: ["R2:eth2", "C2:eth1"]
     - endpoints: ["R3:e1-2", "C3:eth1"]
 

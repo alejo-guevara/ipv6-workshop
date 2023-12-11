@@ -18,7 +18,6 @@ password: NokiaSrl1!
 
 ### For FRR Node (R1)
 
-sudo docker exec -it clab-ipv6-ws-R1 /bin/ash
 sudo docker exec -it clab-ipv6-ws-R1 vtysh
 
 ### For OpenBGPD Node (R2)
