@@ -36,6 +36,7 @@ topology:
       exec:
         - "ip address add dev eth1 2001:db8:ffab::2/64"
         - "ip address add dev eth2 2001:db8:eb01::1/64"
+        - "sysctl -w net.ipv6.conf.all.forwarding=1"
 
     R3:
       kind: srl
