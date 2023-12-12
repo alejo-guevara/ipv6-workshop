@@ -25,6 +25,8 @@ topology:
       binds:
         - configs/R1-frr.conf:/etc/frr/frr.conf
         - configs/R1-frr-daemons.cfg:/etc/frr/daemons
+      exec:
+        - "sysctl -w net.ipv6.conf.all.forwarding=1"
 
     R2: 
       kind: linux
@@ -39,35 +41,42 @@ topology:
       kind: srl
       startup-config: configs/R3.json
 
+
+
+
   ### CLIENTS AND SERVERS ###
 
     C1:
       kind: linux
       exec:
         - ip -6 address add 2001:db8:ca01::2/64 dev eth1
-        - ip -6 route del ::/0
-        - route add -A inet6 default dev eth1
+        - ip -6 route del default dev eth0
+        - ip -6 route add default via 2001:db8:ca01::1
+        - echo "nameserver 2001:db8:ffad::2" > /etc/resolv.conf
 
     C2:
       kind: linux
       exec:
         - ip -6 address add 2001:db8:eb01::2/64 dev eth1
-        - ip -6 route del ::/0
-        - route add -A inet6 default dev eth1
+        - ip -6 route del default dev eth0
+        - ip -6 route add default via 2001:db8:eb01::1
+        - echo "nameserver 2001:db8:ffad::2" > /etc/resolv.conf
 
     C3:
       kind: linux
       exec:
         - ip -6 address add 2001:db8:eac1::2/64 dev eth1
-        - ip -6 route del ::/0
-        - route add -A inet6 default dev eth1
+        - ip -6 route del default dev eth0
+        - ip -6 route add default via 2001:db8:eac1::1
+        - echo "nameserver 2001:db8:ffad::2" > /etc/resolv.conf
 
     Server:
       kind: linux
+      image: quay.io/frrouting/frr:8.4.1
       exec:
         - ip -6 address add 2001:db8:ffad::2/64 dev eth1
-        - ip -6 route del ::/0
-        - route add -A inet6 default dev eth1
+        - ip -6 route del default dev eth0
+        - ip -6 route add default via 2001:db8:ffad::1
 
   links:
     - endpoints: ["Rbackbone:e1-1", "R1:eth1"]
