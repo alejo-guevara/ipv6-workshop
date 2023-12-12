@@ -73,7 +73,12 @@ topology:
 
     Server:
       kind: linux
+      binds:
+        - configs/server.sh:/root/server.sh
+        - configs/web-server.html:/var/www/localhost/htdocs/index.html
       exec:
+        - chmod +x /root/server.sh
+        - bash /root/server.sh
         - ip -6 address add 2001:db8:ffad::2/64 dev eth1
         - ip -6 route del default dev eth0
         - ip -6 route add default via 2001:db8:ffad::1
