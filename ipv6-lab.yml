@@ -49,39 +49,45 @@ topology:
 
     C1:
       kind: linux
+      binds:
+        - configs/resolv.conf:/etc/resolv.conf
       exec:
         - ip -6 address add 2001:db8:ca01::2/64 dev eth1
         - ip -6 route del default dev eth0
         - ip -6 route add default via 2001:db8:ca01::1
-        - echo "nameserver 2001:db8:ffad::2" > /etc/resolv.conf
 
     C2:
       kind: linux
+      binds:
+        - configs/resolv.conf:/etc/resolv.conf
       exec:
         - ip -6 address add 2001:db8:eb01::2/64 dev eth1
         - ip -6 route del default dev eth0
         - ip -6 route add default via 2001:db8:eb01::1
-        - echo "nameserver 2001:db8:ffad::2" > /etc/resolv.conf
 
     C3:
       kind: linux
+      binds:
+        - configs/resolv.conf:/etc/resolv.conf
       exec:
         - ip -6 address add 2001:db8:eac1::2/64 dev eth1
         - ip -6 route del default dev eth0
         - ip -6 route add default via 2001:db8:eac1::1
-        - echo "nameserver 2001:db8:ffad::2" > /etc/resolv.conf
 
     Server:
       kind: linux
       binds:
         - configs/server.sh:/root/server.sh
         - configs/web-server.html:/var/www/localhost/htdocs/index.html
+        - configs/named.conf:/etc/bind/named.conf
+        - configs/nokialacnic.2023:/etc/bind/nokialacnic.2023
       exec:
         - chmod +x /root/server.sh
         - bash /root/server.sh
         - ip -6 address add 2001:db8:ffad::2/64 dev eth1
         - ip -6 route del default dev eth0
         - ip -6 route add default via 2001:db8:ffad::1
+        - /usr/sbin/named
 
   links:
     - endpoints: ["Rbackbone:e1-1", "R1:eth1"]

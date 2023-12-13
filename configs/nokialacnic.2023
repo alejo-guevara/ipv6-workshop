@@ -1,0 +1,19 @@
+$TTL 1W
+@			1D IN SOA	localhost. root.localhost. (
+					2002081601	; serial
+					3H		; refresh
+					15M		; retry
+					1W		; expiry
+					1D )		; minimum
+
+			1D IN NS	localhost.
+			1D IN AAAA	2001:db8:ffad::2
+server			1D IN AAAA	2001:db8:ffad::2
+r1			1D IN AAAA	2001:db8:ffaa::1
+r2			1D IN AAAA	2001:db8:ffab::1
+r3			1D IN AAAA	2001:db8:ffac::1
+c1			1D IN AAAA	2001:db8:ca01::2
+c2			1D IN AAAA	2001:db8:eb01::2
+c3			1D IN AAAA	2001:db8:eac1::2
+rbackbone		1D IN AAAA	2001:db8:ffad::255
+

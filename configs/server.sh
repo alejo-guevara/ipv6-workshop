@@ -8,5 +8,5 @@ sleep 1
 /etc/rc.d/apache2 stop
 /etc/init.d/nginx stop
 /usr/sbin/httpd
-sleep 1
-rc-service named startenrc
+#sleep 1
+#rc-service named startenrc
